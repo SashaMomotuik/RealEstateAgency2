@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ namespace RealEstateAgency2.Abstract
 {
    public interface IRoomImagesRepository
     {
-        //tblRoomImages Add(tblRoomImages roomImages);
+        RoomImage Add(RoomImage roomImages);
 
-        //void Remove(tblRoomImages roomImages);
-        //IQueryable<tblRoomImages> GetAll();
+        void Remove(RoomImage roomImages);
+        IQueryable<RoomImage> GetAll();
 
-        //int SaveChanges();
+        int SaveChanges();
     }
 }

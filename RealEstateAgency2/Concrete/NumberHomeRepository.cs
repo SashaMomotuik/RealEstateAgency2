@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency2.Abstract;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,33 +11,33 @@ namespace RealEstateAgency2.Concrete
     public class NumberHomeRepository : INumberHomeRepository
     {
 
-        //private readonly RealEstateAgencyEntities _context;
+        private readonly EFContext _context;
 
-        //public NumberHomeRepository(RealEstateAgencyEntities context)
-        //{
-        //    _context = context;
-        //}
+        public NumberHomeRepository(EFContext context)
+        {
+            _context = context;
+        }
 
 
-        //public tblNumbersHome Add(tblNumbersHome house)
-        //{
-        //    _context.tblNumbersHome.Add(house);
-        //    return house;
-        //}
+        public NumberHouse Add(NumberHouse house)
+        {
+            _context.NumberHouses.Add(house);
+            return house;
+        }
 
-        //public IQueryable<tblNumbersHome> GetAll()
-        //{
-        //    return _context.tblNumbersHome.AsQueryable();
-        //}
+        public IQueryable<NumberHouse> GetAll()
+        {
+            return _context.NumberHouses.AsQueryable();
+        }
 
-        //public void Remove(tblNumbersHome house)
-        //{
-        //    _context.tblNumbersHome.Add(house);
-        //}
+        public void Remove(NumberHouse house)
+        {
+            _context.NumberHouses.Add(house);
+        }
 
-        //public int SaveChanges()
-        //{
-        //    return _context.SaveChanges();
-        //}
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

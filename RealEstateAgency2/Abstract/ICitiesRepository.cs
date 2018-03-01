@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,12 @@ namespace RealEstateAgency2.Abstract
 {
     public interface ICitiesRepository
     {
-        //tblCities Add(tblCities cities);
+        City Add(City cities);
 
-        //void Remove(tblCities cities);
-        //IQueryable<tblCities> GetAll();
+        void Remove(City cities);
+        IQueryable<City> GetAll();
 
-        //int SaveChanges();
+        int SaveChanges();
 
     }
 }

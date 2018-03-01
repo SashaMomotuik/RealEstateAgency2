@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,12 @@ namespace RealEstateAgency2.Abstract
 {
    public interface IStreetsRepository
     {
-        //tblStreets Add(tblStreets streets);
+        Street Add(Street streets);
 
-        //void Remove(tblStreets streets);
-        //IQueryable<tblStreets> GetAll();
+        void Remove(Street streets);
+        IQueryable<Street> GetAll();
 
-        //int SaveChanges();
+        int SaveChanges();
 
     }
 }

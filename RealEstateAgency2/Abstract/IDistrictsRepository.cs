@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,13 @@ namespace RealEstateAgency2.Abstract
    public  interface IDistrictsRepository
     {
 
-        //tblDistricts Add(tblDistricts districts);
+        District Add(District districts);
 
-        //void Remove(tblDistricts districts);
-        //IQueryable<tblDistricts> GetAll(); // отримати райони по ід міста?
+        void Remove(District districts);
+        IQueryable<District> GetAll(); // отримати райони по ід міста?
 
 
-        //int SaveChanges();
+        int SaveChanges();
 
     }
 }

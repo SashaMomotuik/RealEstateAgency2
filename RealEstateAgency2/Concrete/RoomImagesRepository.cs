@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency2.Abstract;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,31 +11,31 @@ namespace RealEstateAgency2.Concrete
     public class RoomImagesRepository : IRoomImagesRepository
     {
 
-        //private readonly RealEstateAgencyEntities _context;
+        private readonly EFContext _context;
 
-        //public RoomImagesRepository(RealEstateAgencyEntities context)
-        //{
-        //    _context = context;
-        //}
-        //public tblRoomImages Add(tblRoomImages roomImages)
-        //{
-        //    _context.tblRoomImages.Add(roomImages);
-        //    return roomImages;
-        //}
+        public RoomImagesRepository(EFContext context)
+        {
+            _context = context;
+        }
+        public RoomImage Add(RoomImage roomImages)
+        {
+            _context.RoomsImages.Add(roomImages);
+            return roomImages;
+        }
 
-        //public IQueryable<tblRoomImages> GetAll()
-        //{
-        //    return _context.tblRoomImages.AsQueryable();
-        //}
+        public IQueryable<RoomImage> GetAll()
+        {
+            return _context.RoomsImages.AsQueryable();
+        }
 
-        //public void Remove(tblRoomImages roomImages)
-        //{
-        //    _context.tblRoomImages.Remove(roomImages);
-        //}
+        public void Remove(RoomImage roomImages)
+        {
+            _context.RoomsImages.Remove(roomImages);
+        }
 
-        //public int SaveChanges()
-        //{
-        //    return _context.SaveChanges();
-        //}
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

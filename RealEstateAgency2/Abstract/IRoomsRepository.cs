@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,12 @@ namespace RealEstateAgency2.Abstract
   public  interface IRoomsRepository
     {
 
-        //tblRooms Add(tblRooms rooms);
+        Room Add(Room rooms);
 
-        //void Remove(tblRooms rooms);
-        //IQueryable<tblRooms> GetAll();
+        void Remove(Room rooms);
+        IQueryable<Room> GetAll();
 
-        //int SaveChanges();
+        int SaveChanges();
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency2.Abstract;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +11,35 @@ namespace RealEstateAgency2.Concrete
     public class StreetsRepository : IStreetsRepository
     {
 
-        //private readonly RealEstateAgencyEntities _context;
+        private readonly EFContext _context;
 
-        //public StreetsRepository(RealEstateAgencyEntities context)
-        //{
-        //    _context = context;
-        //}
+        public StreetsRepository(EFContext context)
+        {
+            _context = context;
+        }
 
 
 
-        //public tblStreets Add(tblStreets streets)
-        //{
-        //    _context.tblStreets.Add(streets);
-        //    return streets;
-        //}
+        public Street Add(Street streets)
+        {
+            _context.Streets.Add(streets);
+            return streets;
+        }
 
-        //public IQueryable<tblStreets> GetAll()
-        //{
-        //    return _context.tblStreets.AsQueryable();
-        //}
+        public IQueryable<Street> GetAll()
+        {
+            return _context.Streets.AsQueryable();
+        }
 
-        //public void Remove(tblStreets streets)
-        //{
-        //    _context.tblStreets.Remove(streets);
+        public void Remove(Street streets)
+        {
+            _context.Streets.Remove(streets);
 
-        //}
+        }
 
-        //public int SaveChanges()
-        //{
-        //    return _context.SaveChanges();
-        //}
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

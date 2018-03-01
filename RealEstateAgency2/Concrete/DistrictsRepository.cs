@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency2.Abstract;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +11,35 @@ namespace RealEstateAgency2.Concrete
     public class DistrictsRepository : IDistrictsRepository
     {
 
-        //private readonly RealEstateAgencyEntities _context;
+        private readonly EFContext _context;
 
-        //public DistrictsRepository(RealEstateAgencyEntities context)
-        //{
-        //    _context = context;
-        //}
-
-
+        public DistrictsRepository(EFContext context)
+        {
+            _context = context;
+        }
 
 
-        //public tblDistricts Add(tblDistricts districts)
-        //{
-        //    _context.tblDistricts.Add(districts);
-        //    return districts;
-        //}
 
-        //public IQueryable<tblDistricts> GetAll()
-        //{
-        //    return _context.tblDistricts.AsQueryable();
-        //}
 
-        //public void Remove(tblDistricts districts)
-        //{
-        //    _context.tblDistricts.Remove(districts);
-        //}
+        public District Add(District districts)
+        {
+            _context.Districts.Add(districts);
+            return districts;
+        }
 
-        //public int SaveChanges()
-        //{
-        //    return _context.SaveChanges();
-        //}
+        public IQueryable<District> GetAll()
+        {
+            return _context.Districts.AsQueryable();
+        }
+
+        public void Remove(District districts)
+        {
+            _context.Districts.Remove(districts);
+        }
+
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

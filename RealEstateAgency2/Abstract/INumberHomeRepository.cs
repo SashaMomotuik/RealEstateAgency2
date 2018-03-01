@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency2.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ namespace RealEstateAgency2.Abstract
 {
     public interface INumberHomeRepository
     {
-        //tblNumbersHome Add(tblNumbersHome house);
+        NumberHouse Add(NumberHouse house);
 
-        //void Remove(tblNumbersHome house);
-        //IQueryable<tblNumbersHome> GetAll();
+        void Remove(NumberHouse house);
+        IQueryable<NumberHouse> GetAll();
 
-        //int SaveChanges();
+        int SaveChanges();
     }
 }
