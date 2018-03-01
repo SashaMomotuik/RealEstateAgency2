@@ -23,16 +23,16 @@ namespace UserInterface_WpfApp
     public partial class MainWindow : Window
     {
 
-     //   private readonly IRoomProvider roomProvider;
+    private readonly IRoomProvider roomProvider;
         public MainWindow()
         {
             InitializeComponent();
 
 
-            //roomProvider = new RoomProvider();
+            roomProvider = new RoomProvider();
 
 
-            //dataGrid.ItemsSource = roomProvider.GetAllRooms();
+            dataGrid.ItemsSource = roomProvider.GetAllRooms();
 
         }
     }

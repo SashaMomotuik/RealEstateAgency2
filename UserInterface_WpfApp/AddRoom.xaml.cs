@@ -3,6 +3,7 @@ using BLL.Model;
 using BLL.Provideer;
 using Microsoft.Win32;
 using RealEstateAgency2;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,31 +33,31 @@ namespace UserInterface_Wpf
     public partial class AddRoom : Window
     {
 
-        //public BLL.Model.PhotoCollection Photos;
+        public BLL.Model.PhotoCollection Photos;
 
-        //private readonly IAdressProvider adressProvider;
+        private readonly IAdressProvider adressProvider;
 
-        //private readonly IRoomProvider roomProvider;
+        private readonly IRoomProvider roomProvider;
 
 
 
         public AddRoom()
         {
             InitializeComponent();
-            //adressProvider = new AdressProvider();
-            //roomProvider = new RoomProvider();
+            adressProvider = new AdressProvider();
+            roomProvider = new RoomProvider();
 
-            //Photos = (BLL.Model.PhotoCollection)(this.Resources["Photos"] as ObjectDataProvider).Data;
+            Photos = (BLL.Model.PhotoCollection)(this.Resources["Photos"] as ObjectDataProvider).Data;
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //IList<tblCities> cities = adressProvider.GetAllCities().ToList();
+            IList<City> cities = adressProvider.GetAllCities().ToList();
 
 
-            //ComboCities.DataContext = cities;
+            ComboCities.DataContext = cities;
 
 
 
@@ -65,73 +66,73 @@ namespace UserInterface_Wpf
 
         private void ComboCities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var item = int.Parse(ComboCities.SelectedValue.ToString());
+            var item = int.Parse(ComboCities.SelectedValue.ToString());
 
-            //IList<tblDistricts> districts = adressProvider.GetDistricts(item).ToList();
+            IList<District> districts = adressProvider.GetDistricts(item).ToList();
 
-            //ComboDistricts.DataContext = districts;
+            ComboDistricts.DataContext = districts;
 
         }
 
         private void ComboDistricts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var item = int.Parse(ComboDistricts.SelectedValue.ToString());
+            var item = int.Parse(ComboDistricts.SelectedValue.ToString());
 
 
 
-            //ComboStreets.DataContext = adressProvider.GetStreets(item);
+            ComboStreets.DataContext = adressProvider.GetStreets(item);
 
         }
 
         private void ButtonAddImage_Click(object sender, RoutedEventArgs e)
         {
 
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
-            //openFileDialog.Multiselect = true;
-            //if (openFileDialog.ShowDialog() == true)
-            //{
-            //    foreach (string filename in openFileDialog.FileNames) // мульти добавление изображений
-            //    {
-            //        this.Photos.AddImage(filename);
-            //    }
-            //}
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (string filename in openFileDialog.FileNames) // мульти добавление изображений
+                {
+                    this.Photos.AddImage(filename);
+                }
+            }
 
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
 
-            //bool reserved = false;
-            //bool sales = false;
+            bool reserved = false;
+            bool sales = false;
 
-            //if (cmbResYes.IsChecked == true) reserved = true;
-            //else reserved = false;
+            if (cmbResYes.IsChecked == true) reserved = true;
+            else reserved = false;
 
-            //if (cmbSalYes.IsChecked == true) sales = true;
-            //else sales = false;
+            if (cmbSalYes.IsChecked == true) sales = true;
+            else sales = false;
 
 
 
-            //RoomAddViewModel roomAddModel = new RoomAddViewModel
-            //{
-            //    SelectCityId = int.Parse(ComboCities.SelectedValue.ToString()),
-            //    SelectDistrictId = int.Parse(ComboDistricts.SelectedValue.ToString()),
-            //    SelectStreetId = int.Parse(ComboStreets.SelectedValue.ToString()),
-            //    NumberHouse = int.Parse(TxtBoxNumber.Text),
-            //    NumberRoom = int.Parse(TxtBoxNumberRoom.Text),
-            //    CountRoom = int.Parse(TxtBoxNumberRoom.Text),
-            //    Floor = int.Parse(TxtBoxNumberRoom.Text),
-            //    price = double.Parse(TxtBoxNumberRoom.Text),
-            //    Square = double.Parse(TxtBoxNumberRoom.Text),
-            //    Reserved = reserved,
-            //    Sales = sales,
-            //    Images = Photos
+            RoomAddViewModel roomAddModel = new RoomAddViewModel
+            {
+                SelectCityId = int.Parse(ComboCities.SelectedValue.ToString()),
+                SelectDistrictId = int.Parse(ComboDistricts.SelectedValue.ToString()),
+                SelectStreetId = int.Parse(ComboStreets.SelectedValue.ToString()),
+                NumberHouse = int.Parse(TxtBoxNumber.Text),
+                NumberRoom = int.Parse(TxtBoxNumberRoom.Text),
+                CountRoom = int.Parse(TxtBoxNumberRoom.Text),
+                Floor = int.Parse(TxtBoxNumberRoom.Text),
+                price = double.Parse(TxtBoxNumberRoom.Text),
+                Square = double.Parse(TxtBoxNumberRoom.Text),
+                Reserved = reserved,
+                Sales = sales,
+                Images = Photos
 
-            //};
+            };
 
-            //var prod = roomProvider.AddRoom(roomAddModel);
-            //if (prod != null) this.Close();
+            var prod = roomProvider.AddRoom(roomAddModel);
+            if (prod != null) this.Close();
 
         }
     }
