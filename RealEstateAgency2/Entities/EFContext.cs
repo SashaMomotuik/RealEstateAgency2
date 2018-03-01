@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateAgency2.Entities
 {
-    class EFContext :DbContext
+   public class EFContext :DbContext
     {
         public EFContext() : base("ConnectionAgency")
         {

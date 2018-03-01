@@ -1,5 +1,6 @@
 ﻿using BLL.Model;
 using RealEstateAgency2;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace BLL.Abstract
 {
      public interface IRoomProvider
     {
-        //tblRooms AddRoom(RoomAddViewModel roomAddModel);
+        Room AddRoom(RoomAddViewModel roomAddModel);
 
-     //   IList<RoomShowViewModel> GetAllRooms();
+        IList<RoomShowViewModel> GetAllRooms();
 
 
     }

@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency2;
+using RealEstateAgency2.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,19 @@ namespace BLL.Abstract
     public interface IAdressProvider
     {
 
-        //IQueryable<tblCities> GetAllCities();
+        IQueryable<City> GetAllCities();
 
-        //IQueryable<tblDistricts> GetDistricts(int cityId);
-        //IList<tblDistricts> GetDistricts();
+        IQueryable<District> GetDistricts(int cityId);
+        IList<District> GetDistricts();
 
-        //IList<tblStreets> GetStreets(int districtId);
-        //IList<tblStreets> GetStreets();
+        IList<Street> GetStreets(int districtId);
+        IList<Street> GetStreets();
 
-        //IList<tblNumbersHome> GetHouses(int streetId);
-        //IList<tblNumbersHome> GetHouses();
+        IList<NumberHouse> GetHouses(int streetId);
+        IList<NumberHouse> GetHouses();
 
-        //IList<tblRooms> GetRooms(int houseId);
-        //IList<tblRooms> GetRooms();
+        IList<Room> GetRooms(int houseId);
+        IList<Room> GetRooms();
 
 
     }

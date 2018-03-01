@@ -10,122 +10,123 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Data.Entity;
+using RealEstateAgency2.Entities;
 
 namespace BLL.Provideer
 {
     public class RoomProvider : IRoomProvider
     {
 
-        //private readonly IRoomsRepository _roomsRepository;
-        //private readonly IRoomImagesRepository _roomImagesRepository;
+        private readonly IRoomsRepository _roomsRepository;
+        private readonly IRoomImagesRepository _roomImagesRepository;
 
-        //public RoomProvider()
-        //{
-        //    RealEstateAgencyEntities context = new RealEstateAgencyEntities();
+        public RoomProvider()
+        {
+            EFContext context = new EFContext();
 
-        //    _roomsRepository = new RoomsRepository(context);
-        //    _roomImagesRepository = new RoomImagesRepository(context);
-
-            
-        //  // var i = _roomsRepository.GetAll().ToList();
-        //    //var list = _roomsRepository.GetAll()
-        //    //    .Include(b => b.tblNumbersHomes)
-        //    //    .Include(s => s.tblNumbersHomes.tblStreets)
-        //    //    .Include(cr => cr.tblNumbersHomes.tblStreets.tblDistricts)
-        //    //    .Include(c => c.tblNumbersHomes.tblStreets.tblDistricts.tblCities)
-        //    //    .Select(r => new
-        //    //    {
-        //    //        RommNumber=r.NumberRoom,
-        //    //        Street=r.tblNumbersHomes.tblStreets.Name
-        //    //    });
+            _roomsRepository = new RoomsRepository(context);
+            _roomImagesRepository = new RoomImagesRepository(context);
 
 
-
-
-        //}
+            // var i = _roomsRepository.GetAll().ToList();
+            //var list = _roomsRepository.GetAll()
+            //    .Include(b => b.tblNumbersHomes)
+            //    .Include(s => s.tblNumbersHomes.tblStreets)
+            //    .Include(cr => cr.tblNumbersHomes.tblStreets.tblDistricts)
+            //    .Include(c => c.tblNumbersHomes.tblStreets.tblDistricts.tblCities)
+            //    .Select(r => new
+            //    {
+            //        RommNumber=r.NumberRoom,
+            //        Street=r.tblNumbersHomes.tblStreets.Name
+            //    });
 
 
 
-        //public tblRooms AddRoom(RoomAddViewModel roomAddModel)
-        //{
-        //    tblRooms room;
-        //    using (TransactionScope scope = new TransactionScope())
-        //    {
 
-        //        room = new tblRooms
-        //        {
-        //            HouseId = roomAddModel.NumberHouse,
-        //            Floor = roomAddModel.Floor,
-        //            CountRooms = roomAddModel.CountRoom,
-        //            NumberRoom = roomAddModel.NumberRoom,
-        //            Price = Convert.ToDecimal(roomAddModel.price),
-        //            Square = Convert.ToDecimal(roomAddModel.Square),
-        //            Reserved = roomAddModel.Reserved,
-        //            Sales = roomAddModel.Sales
-
-        //        };
-        //        _roomsRepository.Add(room);
-        //        _roomsRepository.SaveChanges();
-
-        //        foreach (var item in roomAddModel.Images)
-        //        {
-        //            var p = ImageToDataBase.ToBinaryArray(item);
-
-        //            tblRoomImages roomImages = new tblRoomImages
-        //            {
-        //                Name = Guid.NewGuid().ToString() + ".jpg",
-        //                RoomId = room.Id,
-        //                Photo = p
-
-        //            };
-
-        //            _roomImagesRepository.Add(roomImages);
-        //        }
-        //        _roomImagesRepository.SaveChanges();
-
-        //        scope.Complete();
-        //    }
+        }
 
 
-        //    return room;
-        //}
 
-        //public IList<RoomShowViewModel> GetAllRooms()
-        //{
+        public Room AddRoom(RoomAddViewModel roomAddModel)
+        {
+            Room room;
+            using (TransactionScope scope = new TransactionScope())
+            {
 
-        //    var tmp = _roomImagesRepository.GetAll();
+                room = new Room
+                {
+                    HouseId = roomAddModel.NumberHouse,
+                    Floor = roomAddModel.Floor,
+                    CountRooms = roomAddModel.CountRoom,
+                    NumberRoom = roomAddModel.NumberRoom,
+                    Price = Convert.ToDecimal(roomAddModel.price),
+                    Square = Convert.ToDecimal(roomAddModel.Square),
+                    Reserved = roomAddModel.Reserved,
+                    Sales = roomAddModel.Sales
+
+                };
+                _roomsRepository.Add(room);
+                _roomsRepository.SaveChanges();
+
+                foreach (var item in roomAddModel.Images)
+                {
+                    var p = ImageToDataBase.ToBinaryArray(item);
+
+                    RoomImage roomImages = new RoomImage
+                    {
+                        Name = Guid.NewGuid().ToString() + ".jpg",
+                        RoomId = room.Id,
+                        Photo = p
+
+                    };
+
+                    _roomImagesRepository.Add(roomImages);
+                }
+                _roomImagesRepository.SaveChanges();
+
+                scope.Complete();
+            }
 
 
-        //    var list = _roomsRepository.GetAll()
-        //        .Include(i => i.tblRoomImages)
-        //           .Include(b => b.tblNumbersHome)
-        //           .Include(s => s.tblNumbersHome.tblStreets)
-        //           .Include(cr => cr.tblNumbersHome.tblStreets.tblDistricts)
-        //           .Include(c => c.tblNumbersHome.tblStreets.tblDistricts.tblCities)
-        //           .Select(x=>x).ToList()
-        //           .Select(r => new RoomShowViewModel
-        //           {
-        //               //RoomCity = r.tblNumbersHome.tblStreets.tblDistricts.tblCities.Name,
-        //               //RoomDistrict = r.tblNumbersHome.tblStreets.tblDistricts.Name,
-        //               //RoomStreet = r.tblNumbersHome.tblStreets.Name,
-        //               RoomNumberHouse = r.tblNumbersHome.Number,
-        //               NumberRoom = r.NumberRoom,
-        //               CountRoom = r.CountRooms,
-        //               Floor = r.Floor,
-        //               Square = r.Square,
-        //               Price = r.Price,
-        //               Reserved = r.Reserved,
-        //               Sales = r.Sales,
+            return room;
+        }
 
-        //               Photos = r.tblRoomImages.Select( x=>x.Photo).ToList()
-                      
+        public IList<RoomShowViewModel> GetAllRooms()
+        {
 
-                     
-        //           }).ToList();
-
-        //    return list;
+            var tmp = _roomImagesRepository.GetAll();
 
 
-        //}
+            var list = _roomsRepository.GetAll()
+                .Include(i => i.RoomImage)
+                   .Include(b => b.NumberHouse)
+                   .Include(s => s.NumberHouse.Street)
+                   .Include(cr => cr.NumberHouse.Street.District)
+                   .Include(c => c.NumberHouse.Street.District.City)
+                 //  .Select(x => x).ToList()
+                   .Select(r => new RoomShowViewModel
+                   {
+                       RoomCity = r.NumberHouse.Street.District.City.Name,
+                       RoomDistrict = r.NumberHouse.Street.District.Name,
+                       RoomStreet = r.NumberHouse.Street.Name,
+                       RoomNumberHouse = r.NumberHouse.Number,
+                       NumberRoom = r.NumberRoom,
+                       CountRoom = r.CountRooms,
+                       Floor = r.Floor,
+                       Square = r.Square,
+                       Price = r.Price,
+                       Reserved = r.Reserved,
+                       Sales = r.Sales,
+
+                       Photos = r.RoomImage.Select(x => x.Photo).ToList()
+
+
+
+                   }).ToList();
+
+            return list;
+
+
+        }
     }
 }
