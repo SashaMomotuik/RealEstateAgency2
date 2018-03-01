@@ -1,0 +1,51 @@
+﻿<Window x:Class="UserInterface_WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface_WpfApp"
+        mc:Ignorable="d"
+      Title="MainWindow" Height="650" Width="1025" >
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5" Background="LightGray" Height="120">
+            <StackPanel Orientation="Vertical">
+                <Image Height="90" Width="100"></Image>
+                <Label Content="" FontStyle="Italic" Width="100"></Label>
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <Grid DockPanel.Dock="Left" Width="300" Margin="5,0,5,5" Background="LightBlue"></Grid>
+
+        <Grid Margin="5,0,5,5" Background="AliceBlue">
+
+            <DataGrid x:Name="dataGrid" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" Margin="15" AutoGenerateColumns="False" IsReadOnly="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="20*" Binding="{Binding RoomCity}" Header="Місто"/>
+                    <DataGridTextColumn Width="20*" Binding="{Binding RoomDistrict}" Header="Район"/>
+                    <DataGridTextColumn Width="25*" Binding="{Binding RoomStreet}" Header="Вулиця"/>
+                    <DataGridTextColumn Width="20*" Binding="{Binding RoomNumberHouse}" Header="Буд."/>
+                    <DataGridTextColumn Width="10*" Binding="{Binding NumberRoom}" Header="Номер"/>
+                    <DataGridTextColumn Width="10*" Binding="{Binding Floor}" Header="Поверх"/>
+                    <DataGridTextColumn Width="10*" Binding="{Binding CountRoom}" Header="Кімнат"/>
+                    <DataGridTextColumn Width="15*" Binding="{Binding Square}" Header="Площа"/>
+                    <DataGridTextColumn Width="20*" Binding="{Binding Price}" Header="Ціна $"/>
+                    <DataGridTextColumn Width="20*" Binding="{Binding Reserved}" Header="Зарезервована"/>
+                    <DataGridTextColumn Width="20*" Binding="{Binding Sales}" Header="Продана"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+
+
+        </Grid>
+
+
+
+    </DockPanel>
+
+
+
+</Window>
