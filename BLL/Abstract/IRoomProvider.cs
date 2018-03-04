@@ -15,6 +15,6 @@ namespace BLL.Abstract
 
         IList<RoomShowViewModel> GetAllRooms();
 
-
+        void DataBaseToExcell();
     }
 }

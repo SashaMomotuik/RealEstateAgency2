@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Data.Entity;
 using RealEstateAgency2.Entities;
+using BLL.DataBaseToExcell;
 
 namespace BLL.Provideer
 {
@@ -48,6 +49,32 @@ namespace BLL.Provideer
 
         }
 
+        public void DataBaseToExcell()
+        {
+            var list = _roomsRepository.GetAll()
+                 .Include(b => b.NumberHouse)
+                 .Include(s => s.NumberHouse.Street)
+                 .Include(cr => cr.NumberHouse.Street.District)
+                 .Include(c => c.NumberHouse.Street.District.City)
+                 .Select(r => new RoomShowViewModel
+                 {
+                     RoomCity = r.NumberHouse.Street.District.City.Name,
+                     RoomDistrict = r.NumberHouse.Street.District.Name,
+                     RoomStreet = r.NumberHouse.Street.Name,
+                     RoomNumberHouse = r.NumberHouse.Number,
+                     NumberRoom = r.NumberRoom,
+                     CountRoom = r.CountRooms,
+                     Floor = r.Floor,
+                     Square = r.Square,
+                     Price = r.Price,
+                     Reserved = r.Reserved,
+                     Sales = r.Sales,
+                 }).ToList();
+
+
+            ExportToExcell.WriteExcel(list);
+        }
+
 
 
         public Room AddRoom(RoomAddViewModel roomAddModel)
@@ -78,9 +105,6 @@ namespace BLL.Provideer
         Room room;
             using (TransactionScope scope = new TransactionScope())
             {
-
-
-
 
 
                 room = new Room

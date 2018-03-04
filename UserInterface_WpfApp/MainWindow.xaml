@@ -15,31 +15,62 @@
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5" Background="LightGray" Height="120">
             <Border Margin="5,5,5,10" BorderThickness="3" CornerRadius="5">
-                
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
                 <Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
                 </Border.BorderBrush>
-
                 <StackPanel Orientation="Vertical" MouseDown="StackPanel_MouseDown">
                 <Image Height="70" Width="90" >
                     <Image.Source>
-                        <BitmapImage  UriSource="C:\Users\user1\source\repos\RealEstateAgency2\RealEstateAgency2\bin\Debug\images\home.gif"></BitmapImage>
+                            <BitmapImage  UriSource="C:\Users\user1\source\repos\RealEstateAgency2\UserInterface_WpfApp\bin\Debug\images\home.gif"></BitmapImage>
                     </Image.Source>
 
                 </Image>
-                <Label Content="Додати Обєкт" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Elephant" FontWeight="Bold" FontStyle="Italic" Cursor="None" Width="93">
-                    <Label.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF9DC5FF" Offset="0.032"/>
-                            <GradientStop Color="#FF2C78E6" Offset="0.628"/>
-                        </LinearGradientBrush>
-                    </Label.Background>
-                </Label>
-            </StackPanel>
+                    <TextBox Text="  Додати об'єкта    " TextWrapping="Wrap" FontFamily="Elephant" FontWeight="Bold" FontStyle="Italic"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"  Height="27" >
+
+
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9DC5FF" Offset="0.032"/>
+                                <GradientStop Color="#FF2C78E6" Offset="0.628"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                </StackPanel>
             </Border>
+
+
+
+            <Border Margin="5,5,5,10" BorderThickness="3" CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+                </Border.BorderBrush>
+                <StackPanel Name="stekpanelExcell" Orientation="Vertical" MouseDown="stekpanelExcell_MouseDown">
+                    <Image Height="70" Width="90" >
+                        <Image.Source>
+                            <BitmapImage  UriSource="C:\Users\user1\source\repos\RealEstateAgency2\UserInterface_WpfApp\bin\Debug\images\excel.png"></BitmapImage>
+                        </Image.Source>
+                    </Image>
+                    <TextBox Text="Вигрузить в Excell" TextWrapping="Wrap" FontFamily="Elephant" FontWeight="Bold" FontStyle="Italic"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"  Height="27" >
+
+
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9DC5FF" Offset="0.032"/>
+                                <GradientStop Color="#FF2C78E6" Offset="0.628"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                       
+                </StackPanel>
+            </Border>
+
+
 
         </StackPanel>
 
