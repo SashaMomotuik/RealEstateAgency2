@@ -19,15 +19,18 @@ namespace BLL.Provideer
 
         private readonly IRoomsRepository _roomsRepository;
         private readonly IRoomImagesRepository _roomImagesRepository;
+        private readonly IAdressProvider _adressProvider;
 
-        public RoomProvider()
+        private readonly INumberHomeRepository _numberHomeRepository;
+
+      public RoomProvider()
         {
             EFContext context = new EFContext();
-
+            _adressProvider = new AdressProvider();
             _roomsRepository = new RoomsRepository(context);
             _roomImagesRepository = new RoomImagesRepository(context);
 
-
+            _numberHomeRepository = new NumberHomeRepository(context);
             // var i = _roomsRepository.GetAll().ToList();
             //var list = _roomsRepository.GetAll()
             //    .Include(b => b.tblNumbersHomes)
@@ -49,13 +52,40 @@ namespace BLL.Provideer
 
         public Room AddRoom(RoomAddViewModel roomAddModel)
         {
-            Room room;
+         
+
+              var findHouse =  _adressProvider.GetHouses(roomAddModel.SelectStreetId)
+                    .Where(x=>x.Number == roomAddModel.NumberHouse)
+                    .FirstOrDefault();
+
+                if(findHouse==null)
+                {
+                    NumberHouse numberHouse = new NumberHouse
+                    {
+                        Number = roomAddModel.NumberHouse,
+                        StreetId= roomAddModel.SelectStreetId
+
+
+                    };
+
+                    _numberHomeRepository.Add(numberHouse);
+                    _numberHomeRepository.SaveChanges();
+
+                findHouse = numberHouse;
+                }
+
+            roomAddModel.NumberHouseID = findHouse.Id;
+        Room room;
             using (TransactionScope scope = new TransactionScope())
             {
 
+
+
+
+
                 room = new Room
                 {
-                    HouseId = roomAddModel.NumberHouse,
+                    HouseId = roomAddModel.NumberHouseID,
                     Floor = roomAddModel.Floor,
                     CountRooms = roomAddModel.CountRoom,
                     NumberRoom = roomAddModel.NumberRoom,
@@ -118,7 +148,7 @@ namespace BLL.Provideer
                        Reserved = r.Reserved,
                        Sales = r.Sales,
 
-                       Photos = r.RoomImage.Select(x => x.Photo).ToList()
+                       Photoses = r.RoomImage.Select(x => x.Photo).ToList()
 
 
 

@@ -12,6 +12,7 @@ namespace BLL.Model
         public int SelectCityId { get; set; }
         public int SelectDistrictId { get; set; }
         public int SelectStreetId { get; set; }
+        public int NumberHouseID { get; set; }
         public int NumberHouse { get; set; }
         public int NumberRoom { get; set; }
         public double price { get; set; }

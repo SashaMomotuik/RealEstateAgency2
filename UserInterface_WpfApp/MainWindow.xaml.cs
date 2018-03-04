@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using BLL.Model;
 using BLL.Provideer;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserInterface_Wpf;
 
 namespace UserInterface_WpfApp
 {
@@ -22,18 +24,25 @@ namespace UserInterface_WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
-    private readonly IRoomProvider roomProvider;
+        public RoomShowCollection RoomCollection;
+        private readonly IRoomProvider roomProvider;
         public MainWindow()
         {
             InitializeComponent();
 
-
+            RoomCollection = (RoomShowCollection)(this.Resources["RoomCollection"] as ObjectDataProvider).Data;
             roomProvider = new RoomProvider();
 
-
+            //dataGrid.ItemsSource = RoomCollection;
             dataGrid.ItemsSource = roomProvider.GetAllRooms();
+            
 
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            AddRoom WindowAddRoom = new AddRoom();
+            WindowAddRoom.Show();
         }
     }
 }

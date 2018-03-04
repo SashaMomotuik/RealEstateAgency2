@@ -75,6 +75,7 @@
     <Compile Include="Model\Photo.cs" />
     <Compile Include="Model\PhotoCollection.cs" />
     <Compile Include="Model\RoomAddViewModel.cs" />
+    <Compile Include="Model\RoomShowCollection.cs" />
     <Compile Include="Model\RoomShowViewModel.cs" />
     <Compile Include="Model\testing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,15 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface_WpfApp"
+        xmlns:bllm="clr-namespace:BLL.Model;assembly=BLL" 
         mc:Ignorable="d"
       Title="MainWindow" Height="650" Width="1025" >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="RoomCollection" ObjectType="{x:Type bllm:RoomShowCollection}" />
+
+    </Window.Resources>
+    
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5" Background="LightGray" Height="120">
-            <StackPanel Orientation="Vertical">
-                <Image Height="90" Width="100"></Image>
-                <Label Content="" FontStyle="Italic" Width="100"></Label>
-            </StackPanel>
+            <Border Margin="5,5,5,10" BorderThickness="3" CornerRadius="5">
+                
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+                </Border.BorderBrush>
 
+                <StackPanel Orientation="Vertical" MouseDown="StackPanel_MouseDown">
+                <Image Height="70" Width="90" >
+                    <Image.Source>
+                        <BitmapImage  UriSource="C:\Users\user1\source\repos\RealEstateAgency2\RealEstateAgency2\bin\Debug\images\home.gif"></BitmapImage>
+                    </Image.Source>
+
+                </Image>
+                <Label Content="Додати Обєкт" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Elephant" FontWeight="Bold" FontStyle="Italic" Cursor="None" Width="93">
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9DC5FF" Offset="0.032"/>
+                            <GradientStop Color="#FF2C78E6" Offset="0.628"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+            </StackPanel>
+            </Border>
 
         </StackPanel>
 
@@ -35,6 +62,35 @@
                     <DataGridTextColumn Width="20*" Binding="{Binding Sales}" Header="Продана"/>
 
                 </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Border>
+                        <StackPanel>
+                            <Image x:Name="imgsroom" Height="100" Source="{Binding listPhoto}" />
+                           
+                        </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                    
+                    
+                    <!--<DataTemplate>
+                        <ItemsControl ItemsSource="{Binding listPhoto}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Image Height="100" Source="{Binding listPhoto}"/>
+                                       
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </DataTemplate>-->
+                </DataGrid.RowDetailsTemplate>
 
             </DataGrid>
 
