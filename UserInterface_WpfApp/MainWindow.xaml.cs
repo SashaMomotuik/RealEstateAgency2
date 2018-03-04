@@ -44,5 +44,16 @@ namespace UserInterface_WpfApp
             AddRoom WindowAddRoom = new AddRoom();
             WindowAddRoom.Show();
         }
+
+        private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (dataGrid.SelectedItem == null) return;
+            var selectedRoom = dataGrid.SelectedItem as RoomShowViewModel;
+
+            WindowImagesRoom imagesRoom = new WindowImagesRoom(selectedRoom.Photoses);
+            imagesRoom.ShowDialog();
+
+
+        }
     }
 }

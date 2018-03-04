@@ -65,6 +65,9 @@
     <Compile Include="testwindowww.xaml.cs">
       <DependentUpon>testwindowww.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowImagesRoom.xaml.cs">
+      <DependentUpon>WindowImagesRoom.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +88,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="testwindowww.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowImagesRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

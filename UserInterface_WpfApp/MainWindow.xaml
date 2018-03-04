@@ -47,7 +47,7 @@
 
         <Grid Margin="5,0,5,5" Background="AliceBlue">
 
-            <DataGrid x:Name="dataGrid" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" Margin="15" AutoGenerateColumns="False" IsReadOnly="True" >
+            <DataGrid x:Name="dataGrid" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" Margin="15" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="20*" Binding="{Binding RoomCity}" Header="Місто"/>
                     <DataGridTextColumn Width="20*" Binding="{Binding RoomDistrict}" Header="Район"/>

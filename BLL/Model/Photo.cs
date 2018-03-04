@@ -79,6 +79,22 @@ namespace BLL.Model
             }
         }
 
+
+        public Photo(byte[] arr)
+        {
+
+                    using (MemoryStream ms = new MemoryStream(arr))
+                    {
+
+                _imageOrigin = BitmapFrame.Create(ms, BitmapCreateOptions.PreservePixelFormat,
+                                BitmapCacheOption.OnLoad);
+
+                    }
+
+       
+        }
+
+
         //public Photo(string path) // конструктор получения изображений из базы
         //{
         //    _path = "s_" +path;

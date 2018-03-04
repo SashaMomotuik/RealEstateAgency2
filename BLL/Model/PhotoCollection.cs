@@ -16,6 +16,11 @@ namespace BLL.Model
             Add(new Photo(pathFile));
         }
 
+        public void AddImage(byte[] arr)
+        {
+            Add(new Photo(arr));
+        }
+
 
     }
 }
