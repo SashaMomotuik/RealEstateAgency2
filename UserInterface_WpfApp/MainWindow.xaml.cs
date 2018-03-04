@@ -42,7 +42,7 @@ namespace UserInterface_WpfApp
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AddRoom WindowAddRoom = new AddRoom();
-            WindowAddRoom.Show();
+            WindowAddRoom.ShowDialog();
         }
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)

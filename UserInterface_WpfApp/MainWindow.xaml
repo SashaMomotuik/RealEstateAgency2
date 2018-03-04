@@ -62,7 +62,7 @@
                     <DataGridTextColumn Width="20*" Binding="{Binding Sales}" Header="Продана"/>
 
                 </DataGrid.Columns>
-                <DataGrid.RowDetailsTemplate>
+                <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <Border>
                         <StackPanel>
@@ -73,7 +73,7 @@
                     </DataTemplate>
                     
                     
-                    <!--<DataTemplate>
+                    --><!--<DataTemplate>
                         <ItemsControl ItemsSource="{Binding listPhoto}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -89,8 +89,8 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                    </DataTemplate>-->
-                </DataGrid.RowDetailsTemplate>
+                    </DataTemplate>--><!--
+                </DataGrid.RowDetailsTemplate>-->
 
             </DataGrid>
 

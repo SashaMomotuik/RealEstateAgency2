@@ -1,6 +1,7 @@
 ﻿using BLL.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,19 @@ namespace UserInterface_WpfApp
         {
             InitializeComponent();
             Photos = (BLL.Model.PhotoCollection)(this.Resources["Photos"] as ObjectDataProvider).Data;
+            if(arr.Count==0)
+            {
+                string path = Environment.CurrentDirectory + ConfigurationManager.AppSettings["ImageStore"].ToString() + "no_image.png";
+
+                var noimg = ImageToDataBase.ToBinaryArray(path);
+
+                this.Photos.AddImage(noimg);
+            }
+            //BitmapImage image = new BitmapImage(new Uri(path));
+            //ImageBrush brush = new ImageBrush();
+            //brush.ImageSource = image;
+
+            //PhotosListBox.Foreground = brush;
 
             foreach (var item in arr) // мульти добавление изображений
             {

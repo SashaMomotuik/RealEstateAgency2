@@ -22,7 +22,19 @@ namespace BLL.Model
 
             return imageData;
         }
+        public static byte[] ToBinaryArray(string s)
+        {
+            string filename = s;  // @"C:\Users\user1\Desktop\Images\1.jpg";
+            byte[] imageData;
+            using (System.IO.FileStream fs = new System.IO.FileStream(filename, FileMode.Open))
+            {
+                imageData = new byte[fs.Length];
+                fs.Read(imageData, 0, imageData.Length);
+            }
 
+
+            return imageData;
+        }
 
     }
 }
