@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:UserInterface_WpfApp"
         xmlns:bllm="clr-namespace:BLL.Model;assembly=BLL" 
         mc:Ignorable="d"
-      Title="MainWindow" Height="650" Width="1025" >
+      Title="MainWindow" Height="654.5" Width="1025" Loaded="Window_Loaded" >
     <Window.Resources>
         <ObjectDataProvider x:Key="RoomCollection" ObjectType="{x:Type bllm:RoomShowCollection}" />
 
     </Window.Resources>
-    
+
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5" Background="LightGray" Height="120">
             <Border Margin="5,5,5,10" BorderThickness="3" CornerRadius="5">
@@ -22,12 +22,12 @@
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
                 </Border.BorderBrush>
                 <StackPanel Orientation="Vertical" MouseDown="StackPanel_MouseDown">
-                <Image Height="70" Width="90" >
-                    <Image.Source>
+                    <Image Height="70" Width="90" >
+                        <Image.Source>
                             <BitmapImage  UriSource="C:\Users\user1\source\repos\RealEstateAgency2\UserInterface_WpfApp\bin\Debug\images\home.gif"></BitmapImage>
-                    </Image.Source>
+                        </Image.Source>
 
-                </Image>
+                    </Image>
                     <TextBox Text="  Додати об'єкта    " TextWrapping="Wrap" FontFamily="Elephant" FontWeight="Bold" FontStyle="Italic"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"  Height="27" >
 
 
@@ -66,7 +66,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                       
+
                 </StackPanel>
             </Border>
 
@@ -76,9 +76,9 @@
 
         <Grid DockPanel.Dock="Left" Width="300" Margin="5,0,5,5" Background="LightBlue"></Grid>
 
-        <Grid Margin="5,0,5,5" Background="AliceBlue">
+        <Grid Margin="5,0,5,10" Background="AliceBlue">
 
-            <DataGrid x:Name="dataGrid" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" Margin="15" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick" >
+            <DataGrid x:Name="dataGrid" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" Margin="15,15,15,69" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="20*" Binding="{Binding RoomCity}" Header="Місто"/>
                     <DataGridTextColumn Width="20*" Binding="{Binding RoomDistrict}" Header="Район"/>
@@ -104,7 +104,8 @@
                     </DataTemplate>
                     
                     
-                    --><!--<DataTemplate>
+                    -->
+                <!--<DataTemplate>
                         <ItemsControl ItemsSource="{Binding listPhoto}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -120,12 +121,18 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                    </DataTemplate>--><!--
+                    </DataTemplate>-->
+                <!--
                 </DataGrid.RowDetailsTemplate>-->
 
             </DataGrid>
 
 
+            <ProgressBar Name="progBar" Margin="15,442,27,10" Minimum="0">
+
+
+            </ProgressBar>
+            <Label Name="label1" Content="0%" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="294,442,315,10" VerticalAlignment="Center"  Width="88" Height="35"/>
 
         </Grid>
 

@@ -83,6 +83,7 @@
     <Compile Include="DataBaseToExcell\ExportToExcell.cs" />
     <Compile Include="Model\ImageToDataBase.cs" />
     <Compile Include="Model\ImageWorker.cs" />
+    <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\Photo.cs" />
     <Compile Include="Model\PhotoCollection.cs" />
     <Compile Include="Model\RoomAddViewModel.cs" />

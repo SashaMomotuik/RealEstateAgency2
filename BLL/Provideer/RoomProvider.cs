@@ -182,5 +182,53 @@ namespace BLL.Provideer
 
 
         }
+
+
+        public int GetCount()
+        {
+           return  _roomsRepository.GetAll().Count();
+
+        }
+
+
+        public IList<RoomShowViewModel> GetAllRoomsSkip(int getCount, int skip)
+        {
+
+            var tmp = _roomImagesRepository.GetAll();
+
+
+            var list = _roomsRepository.GetAll()
+                .Include(i => i.RoomImage)
+                   .Include(b => b.NumberHouse)
+                   .Include(s => s.NumberHouse.Street)
+                   .Include(cr => cr.NumberHouse.Street.District)
+                   .Include(c => c.NumberHouse.Street.District.City)
+                 .OrderBy(n=>n.Price)
+                 .Skip(skip)
+                 .Take(getCount)
+                   .Select(r => new RoomShowViewModel
+                   {
+                       RoomCity = r.NumberHouse.Street.District.City.Name,
+                       RoomDistrict = r.NumberHouse.Street.District.Name,
+                       RoomStreet = r.NumberHouse.Street.Name,
+                       RoomNumberHouse = r.NumberHouse.Number,
+                       NumberRoom = r.NumberRoom,
+                       CountRoom = r.CountRooms,
+                       Floor = r.Floor,
+                       Square = r.Square,
+                       Price = r.Price,
+                       Reserved = r.Reserved,
+                       Sales = r.Sales,
+
+                       Photoses = r.RoomImage.Select(x => x.Photo).ToList()
+
+
+
+                   }).ToList();
+
+            return list;
+
+
+        }
     }
 }
